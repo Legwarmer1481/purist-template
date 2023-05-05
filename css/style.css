@@ -61,6 +61,12 @@ video {
 .columns {
 	display: grid;
 	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	gap: var(--gap-small);
+}
+
+.columns-auto-width {
+	display: flex;
 	gap: var(--gap-small);
 }
 
@@ -68,10 +74,17 @@ video {
 	margin-block-start: var(--gap-small);
 }
 
+.navigations > ul {
+	list-style: none;
+}
+
 /* UTILITIES */
 
 .container {
 	padding-block: var(--gap-large);
+}
+.container__small {
+	padding-block: var(--gap-med);
 }
 
 .wrapper {
