@@ -384,21 +384,21 @@ abbr{
 	transition: opacity 250ms linear;
 }
 .main-nav-toggle .top{
-	transform-origin: 20% 20%;
+	transform-origin: top center;
 	transition: 250ms linear;
 }
 .main-nav-toggle .bottom{
-	transform-origin: 80% 80%;
+	transform-origin: bottom center;
 	transition: 250ms linear;
 }
 header.active .main-nav-toggle .top{
-	transform: rotateZ(45deg);
+	transform: rotateZ(45deg) translateX(25%) translateY(25%);
 }
 header.active .main-nav-toggle .middle{
 	opacity: 0;
 }
 header.active .main-nav-toggle .bottom{
-	transform: rotateZ(-45deg) translateX(35%) translateY(-37%);
+	transform: rotateZ(-45deg) translateX(32%) translateY(-10%);
 }
 @media (min-width: 46em){
 	.main-nav{
