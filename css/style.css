@@ -185,6 +185,11 @@ p{
 	color: var(--color-background);
 }
 
+.clr-text{
+	background-color: hsl(var(--hsl-text) / var(--opacity, 1));
+	color: var(--color-background);
+}
+
 /* ========================== BLOCKS ========================== */
 /* logo
 	--logo-gap: number value (em | rem | px | ...)
