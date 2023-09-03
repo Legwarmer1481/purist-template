@@ -1,33 +1,71 @@
-/* SETTINGS */
+/* FONTS IMPORT AND @FONTFACE */
+@import url('https://fonts.bunny.net/css?family=handlee:400|kanit:400,400i,500,500i,600,600i');
+
+/* ========================== SETTINGS ========================== */
 :root {
 	/* COLORS */
 	--color-dark: #000;
 	--color-light: #fff;
 
-	--color-primary: #000;
-	--color-secondary: #000;
-	--color-bg-primary: #000;
-	--color-bg-secondary: #000;
-	--color-accent: #000;
+	--hsl-text: 192 100% 10%;
+    --hsl-background: 192 63% 97%;
+    --hsl-primary: 192 65% 72%;
+    --hsl-secondary: 193 66% 93%;
+    --hsl-accent: 192 66% 23%;
+
+	--color-text: hsl(var(--hsl-text));
+    --color-background: hsl(var(--hsl-background));
+    --color-primary: hsl(var(--hsl-primary));
+    --color-secondary: hsl(var(--hsl-secondary));
+    --color-accent: hsl(var(--hsl-accent));
+
+	--clr-percent: 50%;
+	--color-text-hover: color-mix(in oklab, var(--color-text) var(--clr-percent), #000);
+    --color-background-hover: color-mix(in oklab, var(--color-background) var(--clr-percent), #000);
+    --color-primary-hover: color-mix(in oklab, var(--color-primary) var(--clr-percent), #000);
+    --color-secondary-hover: color-mix(in oklab, var(--color-secondary) var(--clr-percent), #000);
+    --color-accent-hover: color-mix(in oklab, var(--color-accent) var(--clr-percent), #000);
 
 	/* FONTS */
-	--ft-xxlarge: 10rem;
-	--ft-xlarge: 4rem;
+	--ft-xxlarge: 4rem;
+	--ft-xlarge: 3rem;
+	--ft-large: 2rem;
 	--ft-medium: 1rem;
 	--ft-small: 0.8rem;
 
-	--ft-primary: sans-serif;
-	--ft-secondary: serif;
+	--ft-primary: Kanit, system-ui, sans-serif; /* Text */
+	--ft-secondary: Handlee, sans-serif; /* Headings */
 
 	/* DIMENSIONS */
-	--gap-large: 10em;
-	--gap-med: 5em;
-	--gap-small: 2em;
+	--gap-xl: 3rem;
+	--gap-large: 1.5rem;
+	--gap-med: 1rem;
+	--gap-small: 0.5rem;
 
-	--max-width: 1440px;
+	--section-pad-block: 2rem;
+	--section-pad-block-small: 1rem;
+	--section-pad-inline: 1rem;
+
+	--max-width: 65.125rem;
 }
 
-/* RESETS */
+@media (prefers-color-scheme: dark){
+	:root{
+		--hsl-text: 192 63% 97%;
+		--hsl-background: 192 100% 10%;
+		--hsl-primary: 192 65% 72%;
+		--hsl-secondary: 193 64% 13%;
+		--hsl-accent: 192 65% 53%;
+
+		--color-text-hover: color-mix(in oklab, var(--color-text) var(--clr-percent), #fff);
+    	--color-background-hover: color-mix(in oklab, var(--color-background) var(--clr-percent), #fff);
+    	--color-primary-hover: color-mix(in oklab, var(--color-primary) var(--clr-percent), #fff);
+    	--color-secondary-hover: color-mix(in oklab, var(--color-secondary) var(--clr-percent), #fff);
+    	--color-accent-hover: color-mix(in oklab, var(--color-accent) var(--clr-percent), #fff);
+	}
+}
+
+/* ========================== RESETS ========================== */
 *,
 *::before,
 *::after {
@@ -46,6 +84,10 @@ html {
 
 body {
 	min-height: 100vh;
+	font-family: var(--ft-primary);
+	font-size: var(--ft-medium);
+	background-color: var(--color-background);
+	color: var(--color-text);
 }
 
 img,
@@ -56,42 +98,200 @@ video {
 	max-width: 100%;
 }
 
-/* COMPOSITIONS */
-
-.columns {
-	display: grid;
-	grid-auto-flow: column;
-	grid-auto-columns: 1fr;
-	gap: var(--gap-small);
+a{
+	color: var(--color-accent);
+}
+a:hover, a:focus{
+	color: var(--color-accent-hover);
 }
 
-.columns-auto-width {
-	display: flex;
-	gap: var(--gap-small);
+p{
+	font-size: var(--ft-medium);
+	line-height: 1.6em;
 }
 
+/* ========================== UTILITIES ========================== */
+/* wrapper */
+.wrapper {
+    width: min(100% - var(--section-pad-inline), var(--max-width));
+    margin-inline: auto;
+}
+
+/* container */
+.container {
+    padding-block: var(--section-pad-block);
+}
+.container--small {
+    padding-block: var(--section-pad-block-small);
+}
+
+/* flow
+	--flow-spacer: number (em|rem|px|...)
+*/
 .flow > * + * {
-	margin-block-start: var(--gap-small);
+    margin-block-start: var(--flow-spacer, 1em);
 }
 
-.navigations > ul {
+/* text aligns */
+.txt-center{
+	text-align: center;
+}
+
+/* headings
+	--fw: font-weight values
+	--lh: number value [ em | rem | px | ... ]
+*/
+.h1, h1{
+	font-family: var(--font-family, var(--ft-secondary));
+	font-size: var(--ft-xxlarge);
+	font-weight: var(--fw, 900);
+	line-height: var(--lh, 1em);
+}
+.h2, h2{
+	font-size: var(--ft-xlarge);
+	font-weight: var(--fw, 800);
+	line-height: var(--lh, 1.2em);
+}
+.h3, h3{
+	font-size: var(--ft-large);
+	font-weight: var(--fw, 700);
+	line-height: var(--lh, 1.3em);
+}
+.h4, h4{
+	font-size: var(--ft-medium);
+	font-weight: var(--fw, 600);
+}
+
+/* colors
+	--opacity: float number from 0 to 1
+*/
+.clr-background{
+	background-color: hsl(var(--hsl-background) / var(--opacity, 1));
+	color: var(--color-text);
+}
+
+.clr-primary{
+	background-color: hsl(var(--hsl-primary) / var(--opacity, 1));
+	color: var(--color-text);
+}
+
+.clr-secondary{
+	background-color: hsl(var(--hsl-secondary) / var(--opacity, 1));
+	color: var(--color-text);
+}
+
+.clr-accent{
+	background-color: hsl(var(--hsl-accent) / var(--opacity, 1));
+	color: var(--color-background);
+}
+
+/* ========================== BLOCKS ========================== */
+/* logo
+	--logo-gap: number value (em | rem | px | ...)
+*/
+.logo{
+	display: flex;
+	align-items: center;
+	gap: var(--logo-gap, var(--gap-small));
+}
+
+/* img-stack
+	--content-position: start | end | space-between | space-around | center | space-evenly
+	--min-height: number value (em | rem | px | ...)
+	--position: top | right | left | bottom | center | number
+	--backdrop: float number from 0 to 2
+	--color: color properties
+*/
+.img-stack {
+    display: grid;
+    place-items: var(--content-position, center);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    min-height: var(--min-height, 10rem);
+}
+.img-stack > * {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+}
+.img-stack__media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+.img-stack__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--position, right);
+	filter: brightness(var(--backdrop, 1));
+}
+.img-stack__content {
+    color: var(--color, var(--color-text));
+}
+
+/* buttons
+	--pad-y: number value
+	--pad-x: number value
+	--radius: number value
+	--color-link: color properties
+	--color-link-dark: color properties
+*/
+.btn{
+	display: inline-block;
+	padding: var(--pad-y, var(--gap-small)) var(--pad-x, var(--gap-med));
+	border-radius: var(--radius, 0.2em);
+	text-decoration: none;
+	cursor: pointer;
+	transition: all 250ms ease-out;
+}
+.btn-primary{
+	background-color: var(--color-primary);
+	color: var(--color-link, var(--color-dark));
+}
+.btn-primary:hover{
+	background-color: var(--color-primary-hover);
+	color: var(--color-link, var(--color-light));
+}
+.btn-secondary{
+	background-color: var(--color-secondary);
+	color: var(--color-link, var(--color-dark));
+}
+.btn-secondary:hover{
+	background-color: var(--color-secondary-hover);
+	color: var(--color-link, var(--color-light));
+}
+@media (prefers-color-scheme: dark){
+	.btn-primary{
+		color: var(--color-link-dark, var(--color-dark));
+	}
+	.btn-primary:hover{
+		color: var(--color-link-dark, var(--color-dark));
+	}
+	.btn-secondary{
+		color: var(--color-link-dark, var(--color-dark));
+	}
+	.btn-secondary:hover{
+		color: var(--color-link-dark, var(--color-dark));
+	}
+}
+
+/* Main navigation
+	--nav-gap: number value (em | rem | px | ...)
+	--color-link: color properties
+*/
+.main-nav ul{
+	display: flex;
+	justify-content: var(--nav-jcontent, end);
+	align-items: center;
+	gap: var(--nav-gap, var(--gap-small));
+
 	list-style: none;
 }
-
-/* UTILITIES */
-
-.container {
-	padding-block: var(--gap-large);
+.main-nav__item-right{
+	margin-inline-end: auto;
 }
-.container__small {
-	padding-block: var(--gap-med);
+.main-nav__link {
+	color: var(--color-link, var(--color-accent));
+	text-decoration: none;
 }
-
-.wrapper {
-	width: min(100%, var(--max-width));
-	margin-inline: auto;
-}
-
-/* BLOCKS */
-
-/* EXCEPTIONS */
