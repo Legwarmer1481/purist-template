@@ -9,11 +9,11 @@
 		<link rel="shortcut icon" href="assets/images/logo.svg" type="image/svg+xml">
 		<link rel="stylesheet" href="css/style.css" />
 		<script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
-		<script src="js/script.js" defer></script>
+		<script type="module" src="js/script.js" defer></script>
 	</head>
 	<body>
 		<div class="full-height">
-			<header class="clr-secondary">
+			<header class="clr-secondary" data-component="Header">
 				<div class="container container--small space-btw">
 					<a class="logo" href="index.html">
 						<svg data-v-fde0c5aa="" version="1.1" viewBox="0 0 25.888 27.391" xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +23,7 @@
 						</svg>
 						<span class="ft-heading">Shayne's Starter Theme</span>
 					</a>
-					<button class="main-nav-toggle">
+					<button class="main-nav-toggle js-toggle">
 						<svg width="24" height="24" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 							<g transform="matrix(.79591 0 0 .79591 1.0501 4.6798)" style="fill:var(--color-text)">
 								<rect class="top" width="27.512" height="3.3305" ry="1.6653"/>
@@ -32,7 +32,7 @@
 							</g>
 						</svg>
 					</button>
-					<nav class="main-nav">
+					<nav class="main-nav js-menu">
 						<ul>
 							<li><a class="main-nav__link" href="#">Documentations</a></li>
 							<li><a class="main-nav__link" href="#">À propos</a></li>
@@ -128,3 +128,4 @@
 		</div>
 	</body>
 </html>
+
