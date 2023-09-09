@@ -73,6 +73,11 @@
 
   /* forms */
   --corner-radius: 0.2em;
+
+    /* Swiper Overrides */
+    --swiper-theme-color: var(--color-primary);
+    --swiper-pagination-bullet-size: 1rem;
+    --swiper-pagination-color: var(--color-accent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -126,6 +131,7 @@
 
 html {
   color-scheme: dark light;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -627,4 +633,18 @@ button {
     --columns: repeat(3, 1fr);
     grid-template-columns: var(--columns-lg, var(--columns));
   }
+}
+
+/* Skip navigation link */
+.skip-nav-link{
+  background-color: var(--color-text);
+  color: var(--color-background);
+  padding: 0.6rem 0.8rem;
+  position: absolute;
+  left: 1rem;
+  transform: translateY(-120%);
+  transition: transform 250ms ease ;
+}
+.skip-nav-link:focus{
+  transform: translateY(1rem);
 }

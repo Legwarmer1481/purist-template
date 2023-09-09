@@ -17,12 +17,16 @@
 	// }
 	"Create new component" :{
 		"scope": "javascript",
-		"prefix": "legwarmer1481-components",
+		"prefix": "leg-components",
 		"body": [
 			"/** ",
 			"* $1 class ",
 			"*/",
 			"export default class $1 {",
+			"    /**",
+			"    * Constructor",
+			"    * @param {HTMLElement} element - HTML element associated to data-component=\"Carousel\"",
+			"    */",
 			"    constructor(element){",
 			"        this.element = element;",
 			"",
@@ -38,7 +42,7 @@
 	},
 	"HTML cards" :{
 		"scope": "html",
-		"prefix": "legwarmer1481-cards",
+		"prefix": "leg-cards",
 		"body": [
 			"<div class=\"cards\">",
 			"    <div class=\"card\">",
@@ -50,5 +54,28 @@
 			"</div>"
 		],
 		"description": "Build a card layout"
+	},
+	"HTML Carousel":{
+		"scope": "html",
+		"prefix": "leg-carousel",
+		"body": [
+			"<div class=\"swiper\" data-component=\"Carousel\" >",
+			"    <div class=\"swiper-wrapper\">",
+			"        <div class=\"swiper-slide\">",
+			"            ",
+			"        </div>",
+			"    </div>",
+			"    <div class=\"swiper-pagination\"></div>",
+			"    <div class=\"swiper-button-prev\"></div>",
+			"    <div class=\"swiper-button-next\"></div>",
+			"</div>"
+		],
+		"description": "Add a carousel with Swiper Structure"
+	},
+	"HTML Carousel slide":{
+		"scope": "html",
+		"prefix": "leg-carousel-slide",
+		"body": "<div class=\"swiper-slide\"></div>",
+		"description": "Add a slide in the carousel"
 	},
 }
