@@ -17,22 +17,95 @@ export default class Carousel {
                 nextEl: this.element.querySelector('.swiper-button-next'),
                 prevEl: this.element.querySelector('.swiper-button-prev'),
             },
-            slidesPerView: 2,
+            slidesPerView: 1.2,
             spaceBetween: 16,
             centeredSlides: true,
             grabCursor: true,
             keyboard: {
                 enabled: true,
             },
+            breakpoints: {
+                580: {
+                    slidesPerView: 1.5,
+                },
+                920: {
+                    slidesPerView: 1.8,
+                    spaceBetween: 24,
+                },
+                1080: {
+                    slidesPerView: 2,
+                    spaceBetween: 32,
+                },
+            },
         };
 
         this.init();
     }
+
+    /**
+     * initialization method
+     */
     init(){
         console.log('Carousel component loaded')
         
+        this.setOptions();
         new Swiper(this.element, this.options);
     }
 
+    setOptions(){
+        // autoplay
+        if('autoplay' in this.element.dataset ){
+            const autoplayNumber = parseInt(this.element.dataset.autoplay);
+            this.options.autoplay = {
+                pauseOnMouseEnter: true,
+            };
 
+            if(!isNaN(autoplayNumber)){
+                this.options.autoplay.delay = autoplayNumber;
+            }
+            
+        }
+
+        // loop
+        if('loop' in this.element.dataset){
+            this.options.loop = true;
+        }
+
+        // Transition Effects (effect)
+        if('transition' in this.element.dataset){
+            switch (this.element.dataset.transition) {
+                case 'fade':
+                    // fade
+                        this.options.effect = 'fade';
+                        this.options.fadeEffect = {
+                            crossFade: true
+                        };
+                    break;
+                    
+                case 'flip':
+                    // flip
+                        this.options.effect = 'flip';
+                    break;
+
+                case 'cube':
+                    // cube
+                        this.options.effect = 'cube';
+                    break;
+
+                case 'coverflow':
+                    // coverflow
+                        this.options.effect = 'coverflow';
+                    break;
+
+                case 'cards':
+                    // cards
+                        this.options.effect = 'cards';
+                    break;
+            
+                default:
+                    console.warn(`The transition you entered is not available !`);
+                    break;
+            }
+        }
+    }
 }

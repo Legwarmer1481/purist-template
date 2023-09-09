@@ -638,13 +638,13 @@ button {
 /* Skip navigation link */
 .skip-nav-link{
   background-color: var(--color-text);
-  color: var(--color-background);
   padding: 0.6rem 0.8rem;
   position: absolute;
   left: 1rem;
   transform: translateY(-120%);
-  transition: transform 250ms ease ;
+  transition: transform 250ms ease;
 }
 .skip-nav-link:focus{
+  color: var(--color-background);
   transform: translateY(1rem);
 }
