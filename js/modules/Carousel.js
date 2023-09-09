@@ -80,6 +80,21 @@ export default class Carousel {
                         this.options.fadeEffect = {
                             crossFade: true
                         };
+                        this.options.slidesPerView = 1;
+                        this.options.spaceBetween = 0;
+                        this.options.breakpoints = {
+                            580: {
+                                slidesPerView: 1,
+                            },
+                            920: {
+                                slidesPerView: 1,
+                                spaceBetween: 0,
+                            },
+                            1080: {
+                                slidesPerView: 1,
+                                spaceBetween: 0,
+                            },
+                        };
                     break;
                     
                 case 'flip':

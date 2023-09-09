@@ -253,15 +253,35 @@ figure {
   margin-block-start: var(--container-margin-y, var(--section-pad-block));
 }
 
-/* Rows and columns
-
+/* Grid
+--columns: number value
+--columns-sm: number-value
+--columns-md: number-value
+--columns-lg: number-value
+--grid-gap: number value
 */
+.grid {
+  --columns: 1fr;
+  display: grid;
+  grid-template-columns: var(--columns-sm, var(--columns));
+  gap: var(--grid-gap, var(--gap-large));
+}
+@media (min-width: 41.25em) {
+  .grid {
+    --columns: repeat(2, 1fr);
+    grid-template-columns: var(--columns-md, var(--columns));
+  }
+}
+@media (min-width: 60em) {
+  .grid {
+    --columns: repeat(3, 1fr);
+    grid-template-columns: var(--columns-lg, var(--columns));
+  }
+}
+
+/* Rows and columns */
 .content-row {
   display: flex;
-  gap: var(--gap-large);
-}
-.grid-columns {
-  display: grid;
   gap: var(--gap-large);
 }
 [class~="center-"] {
@@ -588,23 +608,14 @@ button {
   }
 }
 
-/* Cards
+/* Card
 --color: color value
 --card-hsl-color: hsl color value without the hsl()
 --opacity: float number from 0 to 1
 --card-padding-y: number value
 --card-padding-x: number value
---columns: number value
---columns-sm: number-value
---columns-md: number-value
---columns-lg: number-value
+--card-hz-direction: flex-direction value
 */
-.cards {
-  --columns: 1fr;
-  display: grid;
-  grid-template-columns: var(--columns-sm, var(--columns));
-  gap: var(--card-gap, var(--gap-large));
-}
 .card {
   background-color: hsl(
     var(--card-hsl-color, var(--hsl-secondary)) / var(--opacity, 1)
@@ -622,17 +633,21 @@ button {
   height: auto;
   object-fit: cover;
 }
-@media (min-width: 41.25em) {
-  .cards {
-    --columns: repeat(2, 1fr);
-    grid-template-columns: var(--columns-md, var(--columns));
-  }
+.card[data-direction="horizontal"]{
+  /* --card-direction: row; */
+  display: flex;
+  flex-direction: var(--card-hz-direction, row);
+  flex-wrap: wrap;
 }
-@media (min-width: 60em) {
-  .cards {
-    --columns: repeat(3, 1fr);
-    grid-template-columns: var(--columns-lg, var(--columns));
-  }
+.card[data-direction="horizontal"] .card__media{
+  flex-grow: 1;
+  flex-basis: 16rem;
+  object-fit: cover;
+}
+.card[data-direction="horizontal"] .card__content{
+  flex-grow: 9999;
+  flex-basis: 50%;
+  align-self: center;
 }
 
 /* Skip navigation link */
@@ -647,4 +662,9 @@ button {
 .skip-nav-link:focus{
   color: var(--color-background);
   transform: translateY(1rem);
+}
+
+/* Swiper Overrides */
+.swiper-fade .swiper-slide > *{
+  margin-inline: auto;
 }

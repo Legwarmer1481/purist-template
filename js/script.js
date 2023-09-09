@@ -11,6 +11,10 @@ class Main{
         }
         this.init();
     }
+
+    /**
+     * Initilizes the components
+     */
     init(){
         console.log('JavaScript is loaded !')
         const components = document.querySelectorAll('[data-component]');
