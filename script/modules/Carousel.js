@@ -1,4 +1,6 @@
-import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs';
+import Swiper from 'swiper';
+import { Navigation, Pagination, Keyboard, Autoplay, EffectFade, EffectCube, EffectFlip, EffectCoverflow, EffectCards } from "swiper/modules";
+
 /** 
 * Carousel class to instanciate a carousel through Swiper
 */
@@ -10,6 +12,7 @@ export default class Carousel {
     constructor(element){
         this.element = element;
         this.options = {
+            modules: [Navigation, Pagination, Keyboard, Autoplay, EffectFade, EffectCube, EffectFlip, EffectCoverflow, EffectCards],
             pagination: {
                 el: this.element.querySelector('.swiper-pagination'),
             },
