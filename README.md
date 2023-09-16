@@ -1,4 +1,4 @@
-# Legwarmer Starter Theme - gulp version
+# Legwarmer Starter Theme
 
 ## Un Environnement de Développement Web Axé sur l'Efficacité
 
