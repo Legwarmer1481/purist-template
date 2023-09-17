@@ -31,6 +31,7 @@ Il convient de noter que cet environnement de développement est hautement adapt
 ## Tâches
 
 - [ ] Support TypeScript
+- [ ] Documentation
 
 ### Composantes
 
@@ -50,6 +51,8 @@ Il convient de noter que cet environnement de développement est hautement adapt
 - [ ] Light/Dark Mode
 - [ ] Isotop ?
 - [ ] Touch
+- [ ] VideoPlayer
+- [ ] MusicPlayer
 
 ### JS Libraries
 
@@ -69,6 +72,19 @@ Il convient de noter que cet environnement de développement est hautement adapt
 - [ ] List.js
 - [ ] PhotoSwipe
 - [ ] Accordion
+- [ ] Video.js
+- [ ] p2p-media-loader
+- [ ] JavascriptSubtitlesOctopus
+
+### CSS Libraries
+
+- [ ] Animate.css
+- [ ] magic
+- [ ] pattern.css
+- [ ] seasonal.css
+- [ ] grxdients
+- [ ] MoreToggles.css
+- [ ] fluiditype
 
 ### Structure HTML/CSS
 
@@ -82,6 +98,8 @@ Il convient de noter que cet environnement de développement est hautement adapt
 
 ### Version de l'environnement
 
+- [x] Purist
+- [x] Gulp
 - [ ] Astro
-- [ ] Vite
+- [x] Vite
 - [ ] Thème WordPress
